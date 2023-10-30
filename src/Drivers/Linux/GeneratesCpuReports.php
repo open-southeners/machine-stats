@@ -44,7 +44,7 @@ trait GeneratesCpuReports
 
             $cpuDelta = $cpuUsageSum - $cpuLastSum;
 
-            $cpuIdle = $cpuNow[4] - $cpuLast[4];
+            $cpuIdle = (int) $cpuNow[4] - (int) $cpuLast[4];
 
             $cpuLast = $cpuNow;
             $cpuLastSum = $cpuUsageSum;

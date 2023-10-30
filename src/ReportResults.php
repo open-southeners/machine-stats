@@ -5,6 +5,9 @@ namespace OpenSoutheners\MachineStats;
 use Exception;
 use OpenSoutheners\ByteUnitConverter\ByteUnit;
 
+/**
+ * @implements \ArrayAccess<string, string|int|float>
+ */
 class ReportResults implements \ArrayAccess
 {
     public function __construct(
@@ -24,6 +27,8 @@ class ReportResults implements \ArrayAccess
 
     /**
      * Get array representation of this class.
+     *
+     * @return array<string, string|int|float>
      */
     public function toArray(): array
     {
@@ -69,6 +74,8 @@ class ReportResults implements \ArrayAccess
 
     /**
      * Constructs the object from serialised.
+     *
+     * @param  array<string, mixed>  $data
      */
     public function __unserialize(array $data): void
     {

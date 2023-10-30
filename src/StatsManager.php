@@ -37,8 +37,8 @@ final class StatsManager
      */
     public static function report(
         bool $relativeCpuUsage = false,
-        ?ByteUnit $memoryUnit = BinaryByteUnit::GiB,
-        ?ByteUnit $diskUnit = BinaryByteUnit::GiB
+        ByteUnit $memoryUnit = BinaryByteUnit::GiB,
+        ByteUnit $diskUnit = BinaryByteUnit::GiB
     ): ReportResults {
         return self::newDriverInstance()->report($relativeCpuUsage, $memoryUnit, $diskUnit);
     }
@@ -48,8 +48,8 @@ final class StatsManager
      */
     public function getReport(
         bool $relativeCpuUsage = false,
-        ?ByteUnit $memoryUnit = BinaryByteUnit::GiB,
-        ?ByteUnit $diskUnit = BinaryByteUnit::GiB
+        ByteUnit $memoryUnit = BinaryByteUnit::GiB,
+        ByteUnit $diskUnit = BinaryByteUnit::GiB
     ): ReportResults {
         return $this->driver->report($relativeCpuUsage, $memoryUnit, $diskUnit);
     }

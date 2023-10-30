@@ -14,8 +14,8 @@ interface DriverInterface
      */
     public function report(
         bool $relativeCpuUsage = false,
-        ?ByteUnit $memoryUnit = BinaryByteUnit::GiB,
-        ?ByteUnit $diskUnit = BinaryByteUnit::GiB
+        ByteUnit $memoryUnit = BinaryByteUnit::GiB,
+        ByteUnit $diskUnit = BinaryByteUnit::GiB
     ): ReportResults;
 
     /**
@@ -26,12 +26,12 @@ interface DriverInterface
     /**
      * Get machine's running memory available.
      */
-    public function memoryAvailable(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    public function memoryAvailable(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
     /**
      * Get machine's running memory usage.
      */
-    public function memoryUsage(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    public function memoryUsage(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
     /**
      * Get machine's running CPU logical cores.
@@ -46,17 +46,17 @@ interface DriverInterface
     /**
      * Get machine's running total disk capacity.
      */
-    public function diskCapacity(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    public function diskCapacity(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
     /**
      * Get machine's running disk capacity available.
      */
-    public function diskAvailable(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    public function diskAvailable(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
     /**
      * Get machine's running disk capacity used.
      */
-    public function diskUsage(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    public function diskUsage(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
     /**
      * Get currently used driver.

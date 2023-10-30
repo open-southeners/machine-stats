@@ -10,39 +10,39 @@ use Symfony\Component\Process\Process;
 
 trait GeneratesDiskReports
 {
-    public function diskCapacity(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float
+    public function diskCapacity(ByteUnit $unit = BinaryByteUnit::GiB): int|float
     {
         return ByteUnitConverter::conversion(
             $this->diskAvailable(BinaryByteUnit::B) + $this->diskUsage(BinaryByteUnit::B),
             BinaryByteUnit::B,
-            $byteUnit
+            $unit
         );
     }
 
-    public function diskAvailable(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float
+    public function diskAvailable(ByteUnit $unit = BinaryByteUnit::GiB): int|float
     {
         $diskUsageBytes = $this->getDisksBytes('$2');
 
-        if ($byteUnit->value === 0) {
+        if ($unit->value === 0) {
             return $diskUsageBytes;
         }
 
         return round(
-            ByteUnitConverter::conversion($diskUsageBytes, BinaryByteUnit::B, $byteUnit),
+            ByteUnitConverter::conversion($diskUsageBytes, BinaryByteUnit::B, $unit),
             2
         );
     }
 
-    public function diskUsage(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float
+    public function diskUsage(ByteUnit $unit = BinaryByteUnit::GiB): int|float
     {
         $diskUsageBytes = $this->getDisksBytes('$4');
 
-        if ($byteUnit->value === 0) {
+        if ($unit->value === 0) {
             return $diskUsageBytes;
         }
 
         return round(
-            ByteUnitConverter::conversion($diskUsageBytes, BinaryByteUnit::B, $byteUnit),
+            ByteUnitConverter::conversion($diskUsageBytes, BinaryByteUnit::B, $unit),
             2
         );
     }

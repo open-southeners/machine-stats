@@ -11,8 +11,8 @@ abstract class Driver implements DriverInterface
 {
     final public function report(
         bool $relativeCpuUsage = false,
-        ?ByteUnit $memoryUnit = BinaryByteUnit::GiB,
-        ?ByteUnit $diskUnit = BinaryByteUnit::GiB
+        ByteUnit $memoryUnit = BinaryByteUnit::GiB,
+        ByteUnit $diskUnit = BinaryByteUnit::GiB
     ): ReportResults {
         return new ReportResults(
             os: $this->operatingSystem(),
@@ -33,19 +33,19 @@ abstract class Driver implements DriverInterface
         return OperatingSystem::Unknown;
     }
 
-    abstract public function memoryAvailable(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    abstract public function memoryAvailable(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
-    abstract public function memoryUsage(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    abstract public function memoryUsage(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
     abstract public function cpuCores(): int;
 
     abstract public function cpuUsage(bool $relative = true): int|float;
 
-    abstract public function diskCapacity(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    abstract public function diskCapacity(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
-    abstract public function diskAvailable(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    abstract public function diskAvailable(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
-    abstract public function diskUsage(ByteUnit $byteUnit = BinaryByteUnit::GiB): int|float;
+    abstract public function diskUsage(ByteUnit $unit = BinaryByteUnit::GiB): int|float;
 
     public function getDriver(): string
     {

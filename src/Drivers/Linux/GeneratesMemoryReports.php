@@ -10,14 +10,14 @@ use Symfony\Component\Process\Process;
 
 trait GeneratesMemoryReports
 {
-    public function memoryAvailable(ByteUnit $unit = ByteUnit::GB, bool $string = false): int|float
+    public function memoryAvailable(ByteUnit $unit = DecimalByteUnit::GB, bool $string = false): int|float
     {
         $memoryStats = $this->getMemoryStats();
 
         return ByteUnitConverter::conversion($memoryStats['MemFree'], DecimalByteUnit::KB, $unit);
     }
 
-    public function memoryUsage(ByteUnit $unit = ByteUnit::GB, bool $string = false): int|float
+    public function memoryUsage(ByteUnit $unit = DecimalByteUnit::GB, bool $string = false): int|float
     {
         $memoryStats = $this->getMemoryStats();
 
@@ -28,6 +28,8 @@ trait GeneratesMemoryReports
 
     /**
      * Get memory stats from "/proc/meminfo" file parsed as a key-value array.
+     *
+     * @return array<string, int>
      */
     protected function getMemoryStats(): array
     {
