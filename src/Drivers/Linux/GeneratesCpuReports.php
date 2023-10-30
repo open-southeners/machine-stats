@@ -38,16 +38,15 @@ trait GeneratesCpuReports
                 throw new Exception('Cannot determine CPU usage from linux system using /proc/stat');
             }
 
-            print_r($processOutput);
             $cpuNow = str_replace('cpu ', '', $processOutput);
 
-            $cpuNow = explode(' ', $cpuNow);
+            $cpuNow = array_map('intval', explode(' ', trim($cpuNow)));
 
             $cpuUsageSum = array_sum($cpuNow);
 
             $cpuDelta = $cpuUsageSum - $cpuLastSum;
 
-            $cpuIdle = (int) $cpuNow[4] - (int) $cpuLast[4];
+            $cpuIdle = $cpuNow[4] - $cpuLast[4];
 
             $cpuLast = $cpuNow;
             $cpuLastSum = $cpuUsageSum;
