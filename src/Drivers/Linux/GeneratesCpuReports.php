@@ -32,11 +32,14 @@ trait GeneratesCpuReports
         while ($i !== 2) {
             $process->run();
 
-            if (! $process->isSuccessful()) {
+            $processOutput = $process->getOutput();
+
+            if (! $process->isSuccessful() || ! $processOutput || empty(trim($processOutput))) {
                 throw new Exception('Cannot determine CPU usage from linux system using /proc/stat');
             }
 
-            $cpuNow = str_replace('cpu ', '', $process->getOutput());
+            print_r($processOutput);
+            $cpuNow = str_replace('cpu ', '', $processOutput);
 
             $cpuNow = explode(' ', $cpuNow);
 

@@ -8,8 +8,10 @@
         "linux",
         "windows",
         "macos",
+        "resources usage",
         "memory usage",
-        "disk usage"
+        "disk usage",
+        "cpu usage"
     ],
     "authors": [
         {
