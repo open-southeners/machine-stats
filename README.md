@@ -1,4 +1,4 @@
-Machine Stats [![required php version](https://img.shields.io/packagist/php-v/open-southeners/machine-stats)](https://www.php.net/supported-versions.php) [![codecov](https://codecov.io/gh/open-southeners/machine-stats/branch/main/graph/badge.svg?token=codecov_badge_token)](https://codecov.io/gh/open-southeners/machine-stats) [![Edit on VSCode online](https://img.shields.io/badge/vscode-edit%20online-blue?logo=visualstudiocode)](https://vscode.dev/github/open-southeners/machine-stats)
+Machine Stats [![required php version](https://img.shields.io/packagist/php-v/open-southeners/machine-stats)](https://www.php.net/supported-versions.php) [![codecov](https://codecov.io/gh/open-southeners/machine-stats/branch/main/graph/badge.svg?token=DGZOCVFLWR)](https://codecov.io/gh/open-southeners/machine-stats) [![Edit on VSCode online](https://img.shields.io/badge/vscode-edit%20online-blue?logo=visualstudiocode)](https://vscode.dev/github/open-southeners/machine-stats)
 ===
 
 A platform agnostic machine stats generator (PHP 8.1+). Usage and totals for CPU, disk, memory...
