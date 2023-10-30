@@ -36,9 +36,11 @@ If you are using Laravel you can simply inject 2 instances into [Laravel's conta
 use OpenSoutheners\MachineStats\StatsManager;
 use OpenSoutheners\MachineStats\Drivers\DriverInterface;
 
-$this->app->bind(StatsManager::class, fn () => new StatManager);
-$this->app->bind(DriverInterface::class, fn (Application $app) => $app->resolve(StatManager::class)->getDriver());
+$this->app->bind(StatsManager::class, fn () => new StatsManager);
+$this->app->bind(DriverInterface::class, fn (Application $app) => $app->make(StatsManager::class)->getDriver());
 ```
+
+**Note: StatsManager is only a wrapper to the Driver, it mimics the Manager code design pattern that Laravel uses in many places like DB, Filesystem, etc. In our case we needed to separate between operating systems (as drivers).**
 
 ## Partners
 
